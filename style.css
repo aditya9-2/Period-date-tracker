@@ -11,6 +11,7 @@
     --text-color: #edebeb;
     --input-background: #ffffff93;
     --primary-btn: #1d4ed8;
+    --secondary-color: #0f172a;
 }
 
 body {
@@ -28,23 +29,25 @@ body {
 
 h1 {
     text-align: center;
+    color: var(--text-color);
 }
 
 .form-container {
-    background-color: #0f172a;
+    background-color: var(--secondary-color);
     height: 400px;
     width: 350px;
     border-radius: 8px;
     box-shadow: 2px 1px 13px #514e4e;
-
+    /* position: absolute; */
 }
 
 .form-container form {
     display: flex;
+    justify-content: center;
     height: 100%;
-    width: 80%;
+    width: 100%;
     flex-direction: column;
-    padding: 20px;
+    padding: 17px;
     gap: 1rem;
 }
 
@@ -57,7 +60,6 @@ h1 {
 }
 
 .form-container form button {
-    margin: 7rem 0px 0rem 4rem;
     padding: 12px;
     background-color: var(--primary-btn);
     color: var(--text-color);
@@ -67,5 +69,46 @@ h1 {
     &:hover {
         opacity: 0.8;
         cursor: pointer;
+    }
+}
+
+#result {
+    display: none;
+    text-align: center;
+    position: relative;
+    bottom: 49px;
+    background: var(--input-background);
+    margin: 0 40px;
+    padding: 4px;
+    border-radius: 8px;
+    font-size: larger;
+}
+
+footer {
+    background-color: var(--secondary-color);
+    position: relative;
+    border-radius: 8px;
+    padding: 10px;
+
+}
+
+footer p {
+    text-align: center;
+}
+
+@media (max-width:430px) {
+    .form-container {
+        height: 380px;
+        width: 280px;
+    }
+
+    .form-container form button {
+        padding: 14px 8px;
+    }
+
+    footer {
+        border-radius: 0;
+        top: 7.5rem;
+        width: 100%;
     }
 }
