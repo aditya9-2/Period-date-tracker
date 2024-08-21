@@ -76,12 +76,12 @@ h1 {
     display: none;
     text-align: center;
     position: relative;
-    bottom: 49px;
+    bottom: 65px;
     background: var(--input-background);
     margin: 0 40px;
     padding: 4px;
     border-radius: 8px;
-    font-size: larger;
+    font-size: 15px;
 }
 
 footer {
