@@ -89,6 +89,7 @@ footer {
     position: relative;
     border-radius: 8px;
     padding: 10px;
+    font-weight: lighter;
 
 }
 
@@ -107,8 +108,10 @@ footer p {
     }
 
     footer {
-        border-radius: 0;
-        top: 7.5rem;
-        width: 100%;
+        border-radius: 8px;
+        top: 0.5rem;
+        font-size: 10px;
+        font-weight: lighter;
+        width: 80%;
     }
 }
