@@ -79,10 +79,10 @@ h1 {
     bottom: 65px;
     background: var(--input-background);
     margin: 0 40px;
-    padding: 4px;
     border-radius: 8px;
     font-size: 15px;
 }
+
 
 footer {
     background-color: var(--secondary-color);
