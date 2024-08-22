@@ -7,20 +7,21 @@ const resultDiv = document.querySelector('#result');
 
 function calculatePeriodDate(isUserAction = false) {
 
+    const lastPeriodDateValue = dateInput.value;
+    const cycleLengthValue = cycleLenthInput.value;
+
+    let lastPeriodDate = new Date(lastPeriodDateValue);
+    let cycle = parseInt(cycleLengthValue);
 
     const savedDate = localStorage.getItem('lastPeriodDate');
     const savedCycle = localStorage.getItem('cycleLength');
+
+
 
     if (savedDate && savedCycle) {
         dateInput.value = savedDate;
         cycleLenthInput.value = savedCycle;
     }
-
-    let lastPeriodDate = new Date(dateInput.value);
-    let cycle = parseInt(cycleLenthInput.value);
-
-
-    // Mosly Logic won't come here for the required filed in input
 
     if (isUserAction && (isNaN(lastPeriodDate.getTime()) || isNaN(cycle))) {
         alert('Please enter valid data and cycle length!');
@@ -32,24 +33,44 @@ function calculatePeriodDate(isUserAction = false) {
         nextPeriodDate.setDate(lastPeriodDate.getDate() + cycle);
 
         resultDiv.style.display = 'block';
+        resultDiv.innerHTML = `Next Period date: ${nextPeriodDate.toDateString()}`;
 
-        let showDate = nextPeriodDate.toDateString();
-        resultDiv.innerHTML = `Next Period date: ${showDate}`;
+        localStorage.setItem('lastPeriodDate', lastPeriodDateValue);
+        localStorage.setItem('cycleLength', cycleLengthValue);
+        localStorage.setItem('nextPeriodDate', nextPeriodDate.toISOString());
+
     }
-
-    localStorage.setItem('lastPeriodDate', dateInput.value);
-    localStorage.setItem('cycleLength', cycleLenthInput.value);
 
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    calculatePeriodDate();
-
-});
 
 formElement.addEventListener('submit', (e) => {
     e.preventDefault();
 
+    // resultDiv.style.display = 'none';
+    // resultDiv.innerHTML = '';
+
     calculatePeriodDate(true);
+
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const savedDate = localStorage.getItem('lastPeriodDate');
+    const savedCycle = localStorage.getItem('cycleLength');
+    const savedNextPeriodDate = localStorage.getItem('nextPeriodDate');
+
+    if (savedDate && savedCycle && savedNextPeriodDate) {
+
+        dateInput.value = savedDate;
+        cycleLenthInput.value = savedCycle;
+        const nextPeriodDate = new Date(savedNextPeriodDate);
+
+        resultDiv.style.display = 'block';
+        resultDiv.innerHTML = `Next Period date: ${nextPeriodDate.toDateString()}`;
+
+
+    }
+
 
 });
